@@ -431,8 +431,153 @@ code {
   margin-bottom: 15px;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+/* Mobile-First Responsive Design */
+
+/* Mobile Styles (320px - 480px) */
+@media (max-width: 480px) {
+  .auth-container {
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .auth-left {
+    height: 150px;
+    min-height: 150px;
+  }
+  
+  .auth-right {
+    padding: 20px 15px;
+    flex: 1;
+  }
+  
+  .auth-form {
+    max-width: 100%;
+  }
+  
+  .auth-title {
+    font-size: 1.5rem;
+  }
+  
+  .auth-subtitle {
+    font-size: 14px;
+  }
+  
+  .auth-input {
+    font-size: 16px; /* Prevents zoom on iOS */
+    padding: 14px 12px;
+  }
+  
+  .auth-button {
+    padding: 14px;
+    font-size: 16px;
+  }
+  
+  .auth-options {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .dashboard-cards {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-card {
+    padding: 15px;
+  }
+  
+  .dashboard-card-title {
+    font-size: 12px;
+  }
+  
+  .dashboard-card-value {
+    font-size: 1.5rem;
+  }
+  
+  .timetable-container {
+    padding: 15px;
+    overflow-x: auto;
+  }
+  
+  .timetable-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .timetable-title {
+    font-size: 1.2rem;
+  }
+  
+  .timetable-table {
+    font-size: 10px;
+    min-width: 600px;
+  }
+  
+  .timetable-table th,
+  .timetable-table td {
+    padding: 6px 4px;
+    white-space: nowrap;
+  }
+  
+  .timetable-period {
+    width: 60px;
+  }
+  
+  .timetable-subject {
+    font-size: 9px;
+    line-height: 1.1;
+  }
+  
+  .timetable-teacher {
+    font-size: 8px;
+  }
+  
+  .upload-container {
+    padding: 20px 15px;
+    margin: 0 10px;
+  }
+  
+  .upload-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .upload-title {
+    font-size: 1.2rem;
+  }
+  
+  .upload-area {
+    padding: 30px 20px;
+  }
+  
+  .upload-icon {
+    font-size: 2.5rem;
+  }
+  
+  .upload-url-input {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .upload-url-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .upload-url-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+}
+
+/* Small Tablets (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
   .auth-container {
     flex-direction: column;
   }
@@ -441,16 +586,160 @@ code {
     height: 200px;
   }
   
+  .auth-right {
+    padding: 30px 25px;
+  }
+  
+  .auth-form {
+    max-width: 450px;
+  }
+  
   .dashboard-cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
   
   .timetable-table {
-    font-size: 10px;
+    font-size: 11px;
   }
   
   .timetable-table th,
   .timetable-table td {
-    padding: 4px 2px;
+    padding: 6px 4px;
+  }
+  
+  .upload-container {
+    padding: 25px;
+  }
+  
+  .upload-url-input {
+    flex-direction: row;
+  }
+}
+
+/* Large Tablets and Small Desktops (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .auth-container {
+    flex-direction: row;
+  }
+  
+  .auth-left {
+    flex: 0.6;
+  }
+  
+  .auth-right {
+    flex: 0.4;
+    padding: 40px 30px;
+  }
+  
+  .dashboard-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .timetable-table {
+    font-size: 12px;
+  }
+  
+  .timetable-table th,
+  .timetable-table td {
+    padding: 8px 6px;
+  }
+}
+
+/* Large Desktops (1025px+) */
+@media (min-width: 1025px) {
+  .auth-container {
+    flex-direction: row;
+  }
+  
+  .auth-left {
+    flex: 1;
+  }
+  
+  .auth-right {
+    flex: 1;
+    padding: 40px;
+  }
+  
+  .dashboard-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .timetable-table {
+    font-size: 12px;
+  }
+  
+  .timetable-table th,
+  .timetable-table td {
+    padding: 8px 4px;
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  .auth-button {
+    min-height: 48px;
+  }
+  
+  .auth-input {
+    min-height: 48px;
+  }
+  
+  .dashboard-card {
+    min-height: 120px;
+  }
+  
+  .btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+  .auth-container {
+    flex-direction: row;
+  }
+  
+  .auth-left {
+    height: 100vh;
+    flex: 0.4;
+  }
+  
+  .auth-right {
+    flex: 0.6;
+    padding: 20px;
+  }
+  
+  .auth-form {
+    max-width: 100%;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .auth-input {
+    border-width: 2px;
+  }
+  
+  .auth-button {
+    border: 2px solid #0891b2;
+  }
+  
+  .dashboard-card {
+    border: 2px solid rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .auth-button,
+  .btn,
+  .upload-area {
+    transition: none;
+  }
+  
+  .upload-spinner {
+    animation: none;
   }
 }

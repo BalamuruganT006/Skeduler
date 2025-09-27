@@ -62,7 +62,19 @@ const Login = ({ onLogin }) => {
       <div className="auth-right">
         <div className="auth-form">
           <div style={{ textAlign: 'right', marginBottom: '20px' }}>
-            <button style={{ background: 'none', border: 'none', fontSize: '1.5rem', cursor: 'pointer' }}>
+            <button 
+              style={{ 
+                background: 'none', 
+                border: 'none', 
+                fontSize: '1.5rem', 
+                cursor: 'pointer',
+                padding: '8px',
+                borderRadius: '4px',
+                transition: 'background-color 0.2s'
+              }}
+              onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(0,0,0,0.1)'}
+              onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
+            >
               ☰
             </button>
           </div>
@@ -142,7 +154,19 @@ const Login = ({ onLogin }) => {
                 />
                 <label htmlFor="rememberMe">Remember me</label>
               </div>
-              <a href="#" className="auth-link">Forgot Password?</a>
+              <button 
+                type="button" 
+                className="auth-link" 
+                style={{ 
+                  background: 'none', 
+                  border: 'none', 
+                  cursor: 'pointer',
+                  textDecoration: 'none'
+                }}
+                onClick={() => alert('Forgot password functionality coming soon!')}
+              >
+                Forgot Password?
+              </button>
             </div>
             
             <button 

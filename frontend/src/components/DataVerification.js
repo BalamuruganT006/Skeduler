@@ -1,14 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const DataVerification = ({ user, onLogout }) => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
+  const closeSidebar = () => {
+    setSidebarOpen(false);
+  };
+
   return (
     <div className="container">
+      {/* Mobile Overlay */}
+      {sidebarOpen && (
+        <div 
+          className={`mobile-overlay ${sidebarOpen ? 'active' : ''}`}
+          onClick={closeSidebar}
+        ></div>
+      )}
+      
       {/* Sidebar */}
-      <div className="sidebar">
+      <div className={`sidebar ${sidebarOpen ? '' : 'mobile-hidden'}`}>
         <div style={{ padding: '20px', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
           <h1 style={{ color: 'white', fontSize: '1.5rem', fontWeight: 'bold' }}>Skeduler</h1>
-          <button style={{ background: 'none', border: 'none', color: 'white', fontSize: '1.2rem', marginTop: '10px' }}>
+          <button 
+            style={{ 
+              background: 'none', 
+              border: 'none', 
+              color: 'white', 
+              fontSize: '1.2rem', 
+              marginTop: '10px',
+              padding: '8px',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              transition: 'background-color 0.2s'
+            }}
+            onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(255,255,255,0.1)'}
+            onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
+            onClick={toggleSidebar}
+          >
             ☰
           </button>
         </div>
@@ -82,26 +115,80 @@ const DataVerification = ({ user, onLogout }) => {
       </div>
 
       {/* Main Content */}
-      <div className="main-content">
+      <div className={`main-content ${sidebarOpen ? '' : 'sidebar-hidden'}`}>
         {/* Header */}
         <div className="header">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>
             <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>Skeduler</h1>
-            <button style={{ background: 'none', border: 'none', color: 'white', fontSize: '1.2rem' }}>
+            <button 
+              style={{ 
+                background: 'none', 
+                border: 'none', 
+                color: 'white', 
+                fontSize: '1.2rem',
+                padding: '8px',
+                borderRadius: '4px',
+                cursor: 'pointer',
+                transition: 'background-color 0.2s'
+              }}
+              onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(255,255,255,0.1)'}
+              onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
+              onClick={toggleSidebar}
+            >
               ☰
             </button>
           </div>
           
-          <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-            <button style={{ background: 'none', border: 'none', color: 'white', fontSize: '1.2rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '15px', flexWrap: 'wrap' }}>
+            <button 
+              style={{ 
+                background: 'none', 
+                border: 'none', 
+                color: 'white', 
+                fontSize: '1.2rem',
+                padding: '8px',
+                borderRadius: '4px',
+                cursor: 'pointer',
+                transition: 'background-color 0.2s'
+              }}
+              onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(255,255,255,0.1)'}
+              onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
+            >
               🔍
             </button>
-            <button style={{ background: 'none', border: 'none', color: 'white', fontSize: '1.2rem' }}>
+            <button 
+              style={{ 
+                background: 'none', 
+                border: 'none', 
+                color: 'white', 
+                fontSize: '1.2rem',
+                padding: '8px',
+                borderRadius: '4px',
+                cursor: 'pointer',
+                transition: 'background-color 0.2s'
+              }}
+              onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(255,255,255,0.1)'}
+              onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
+            >
               🔔
             </button>
             <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-              <span>ADMIN</span>
-              <button style={{ background: 'none', border: 'none', color: 'white' }}>▼</button>
+              <span style={{ fontSize: '14px' }}>ADMIN</span>
+              <button 
+                style={{ 
+                  background: 'none', 
+                  border: 'none', 
+                  color: 'white',
+                  padding: '4px',
+                  borderRadius: '4px',
+                  cursor: 'pointer',
+                  transition: 'background-color 0.2s'
+                }}
+                onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(255,255,255,0.1)'}
+                onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
+              >
+                ▼
+              </button>
             </div>
           </div>
         </div>
