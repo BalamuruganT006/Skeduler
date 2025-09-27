@@ -1,15 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const DataVerification = ({ user, onLogout }) => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
+  const closeSidebar = () => {
+    setSidebarOpen(false);
+  };
+
   return (
     <div className="container">
+      {/* Sidebar Overlay */}
+      {sidebarOpen && <div className="sidebar-overlay open" onClick={closeSidebar}></div>}
+      
       {/* Sidebar */}
-      <div className="sidebar">
+      <div className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
         <div style={{ padding: '20px', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
           <h1 style={{ color: 'white', fontSize: '1.5rem', fontWeight: 'bold' }}>Skeduler</h1>
-          <button style={{ background: 'none', border: 'none', color: 'white', fontSize: '1.2rem', marginTop: '10px' }}>
-            ☰
+          <button 
+            className="mobile-menu-toggle"
+            onClick={closeSidebar}
+            style={{ background: 'none', border: 'none', color: 'white', fontSize: '1.2rem', marginTop: '10px' }}
+          >
+            ×
           </button>
         </div>
         

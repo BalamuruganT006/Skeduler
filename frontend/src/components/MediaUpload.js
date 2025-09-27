@@ -5,6 +5,7 @@ const MediaUpload = ({ user, onLogout }) => {
   const [uploadState, setUploadState] = useState('idle'); // 'idle', 'uploading', 'error'
   const [uploadedUrls, setUploadedUrls] = useState([]);
   const [urlInput, setUrlInput] = useState('');
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const handleFileUpload = (e) => {
     const files = e.target.files;
@@ -107,20 +108,36 @@ const MediaUpload = ({ user, onLogout }) => {
     }
   };
 
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
+  const closeSidebar = () => {
+    setSidebarOpen(false);
+  };
+
   return (
     <div className="container">
+      {/* Sidebar Overlay */}
+      {sidebarOpen && <div className="sidebar-overlay open" onClick={closeSidebar}></div>}
+      
       {/* Sidebar */}
-      <div className="sidebar">
+      <div className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
         <div style={{ padding: '20px', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
           <h1 style={{ color: 'white', fontSize: '1.5rem', fontWeight: 'bold' }}>Skeduler</h1>
-          <button style={{ background: 'none', border: 'none', color: 'white', fontSize: '1.2rem', marginTop: '10px' }}>
-            ☰
+          <button 
+            className="mobile-menu-toggle"
+            onClick={closeSidebar}
+            style={{ background: 'none', border: 'none', color: 'white', fontSize: '1.2rem', marginTop: '10px' }}
+          >
+            ×
           </button>
         </div>
         
         <nav style={{ padding: '20px 0' }}>
           <Link 
             to="/dashboard" 
+            onClick={closeSidebar}
             style={{ 
               display: 'flex', 
               alignItems: 'center', 
@@ -137,6 +154,7 @@ const MediaUpload = ({ user, onLogout }) => {
           
           <Link 
             to="/upload" 
+            onClick={closeSidebar}
             style={{ 
               display: 'flex', 
               alignItems: 'center', 
@@ -154,6 +172,7 @@ const MediaUpload = ({ user, onLogout }) => {
           
           <Link 
             to="/verification" 
+            onClick={closeSidebar}
             style={{ 
               display: 'flex', 
               alignItems: 'center', 
@@ -170,6 +189,7 @@ const MediaUpload = ({ user, onLogout }) => {
           
           <Link 
             to="/settings" 
+            onClick={closeSidebar}
             style={{ 
               display: 'flex', 
               alignItems: 'center', 
@@ -191,10 +211,14 @@ const MediaUpload = ({ user, onLogout }) => {
         {/* Header */}
         <div className="header">
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-            <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>Skeduler</h1>
-            <button style={{ background: 'none', border: 'none', color: 'white', fontSize: '1.2rem' }}>
+            <button 
+              className="mobile-menu-toggle"
+              onClick={toggleSidebar}
+              style={{ background: 'none', border: 'none', color: 'white', fontSize: '1.2rem' }}
+            >
               ☰
             </button>
+            <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>Skeduler</h1>
           </div>
           
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>

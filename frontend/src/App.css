@@ -432,6 +432,23 @@ code {
 }
 
 /* Responsive Design */
+/* Large Tablets and Small Desktops */
+@media (max-width: 1024px) {
+  .upload-container {
+    max-width: 500px;
+    padding: 25px;
+  }
+  
+  .upload-area {
+    padding: 30px;
+  }
+  
+  .upload-icon {
+    font-size: 2.5rem;
+  }
+}
+
+/* Tablets */
 @media (max-width: 768px) {
   .auth-container {
     flex-direction: column;
@@ -443,6 +460,19 @@ code {
   
   .dashboard-cards {
     grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .dashboard-card {
+    padding: 15px;
+  }
+  
+  .dashboard-card-title {
+    font-size: 12px;
+  }
+  
+  .dashboard-card-value {
+    font-size: 1.5rem;
   }
   
   .timetable-table {
@@ -452,5 +482,264 @@ code {
   .timetable-table th,
   .timetable-table td {
     padding: 4px 2px;
+  }
+  
+  /* Timetable Responsive */
+  .timetable-container {
+    padding: 15px;
+  }
+  
+  .timetable-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .timetable-title {
+    font-size: 1.3rem;
+  }
+  
+  /* Dashboard Table Responsive */
+  .table {
+    font-size: 12px;
+  }
+  
+  .table th,
+  .table td {
+    padding: 8px 6px;
+  }
+  
+  .btn {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+  
+  /* MediaUpload Responsive */
+  .upload-container {
+    max-width: 100%;
+    padding: 20px;
+    margin: 0;
+  }
+  
+  .upload-area {
+    padding: 25px 20px;
+  }
+  
+  .upload-icon {
+    font-size: 2rem;
+  }
+  
+  .upload-text {
+    font-size: 16px;
+  }
+  
+  .upload-subtext {
+    font-size: 13px;
+  }
+  
+  .upload-url-input {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .upload-url-input .form-input {
+    width: 100%;
+  }
+  
+  .upload-url-input .btn {
+    width: 100%;
+  }
+}
+
+/* Mobile Phones */
+@media (max-width: 480px) {
+  /* Dashboard Mobile */
+  .dashboard-cards {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .dashboard-card {
+    padding: 12px;
+  }
+  
+  .dashboard-card-title {
+    font-size: 11px;
+  }
+  
+  .dashboard-card-value {
+    font-size: 1.3rem;
+  }
+  
+  .dashboard-card-icon {
+    font-size: 1.2rem;
+  }
+  
+  /* Table Mobile - Make it scrollable */
+  .table {
+    font-size: 11px;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  .table th,
+  .table td {
+    padding: 6px 4px;
+    min-width: 80px;
+  }
+  
+  .btn {
+    padding: 8px 12px;
+    font-size: 11px;
+    margin: 2px;
+  }
+  
+  /* Download All Button */
+  .btn-primary {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  /* Timetable Mobile */
+  .timetable-container {
+    padding: 10px;
+  }
+  
+  .timetable-table {
+    font-size: 8px;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  .timetable-table th,
+  .timetable-table td {
+    padding: 3px 2px;
+    min-width: 60px;
+  }
+  
+  .timetable-period {
+    width: 60px;
+    font-size: 8px;
+  }
+  
+  .timetable-subject {
+    font-size: 7px;
+    line-height: 1.1;
+  }
+  
+  .timetable-teacher {
+    font-size: 6px;
+  }
+  
+  /* Settings and DataVerification Mobile */
+  .settings-container,
+  .verification-container {
+    padding: 15px;
+  }
+  
+  .settings-section {
+    margin-bottom: 20px;
+  }
+  
+  .settings-section h3 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+  }
+  
+  .setting-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 15px;
+  }
+  
+  .setting-label {
+    font-size: 14px;
+  }
+  
+  .setting-control {
+    width: 100%;
+  }
+  
+  .upload-container {
+    padding: 15px;
+  }
+  
+  .upload-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .upload-title {
+    font-size: 1.3rem;
+  }
+  
+  .upload-area {
+    padding: 20px 15px;
+  }
+  
+  .upload-icon {
+    font-size: 1.8rem;
+  }
+  
+  .upload-text {
+    font-size: 15px;
+  }
+  
+  .upload-subtext {
+    font-size: 12px;
+  }
+  
+  .upload-browse-btn {
+    margin-top: 12px;
+    width: 100%;
+  }
+  
+  .upload-url-title {
+    font-size: 1rem;
+  }
+  
+  .upload-url-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .upload-url-info {
+    width: 100%;
+  }
+  
+  .upload-url-delete {
+    align-self: flex-end;
+  }
+}
+
+/* Extra Small Devices */
+@media (max-width: 320px) {
+  .upload-container {
+    padding: 10px;
+  }
+  
+  .upload-area {
+    padding: 15px 10px;
+  }
+  
+  .upload-icon {
+    font-size: 1.5rem;
+  }
+  
+  .upload-text {
+    font-size: 14px;
+  }
+  
+  .upload-subtext {
+    font-size: 11px;
+  }
+  
+  .upload-title {
+    font-size: 1.2rem;
   }
 }
