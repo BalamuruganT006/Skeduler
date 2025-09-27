@@ -6,7 +6,6 @@ const Timetable = ({ user, onLogout }) => {
   const location = useLocation();
   const [selectedClass, setSelectedClass] = useState('III_SEM_A');
   const [navigationInfo, setNavigationInfo] = useState(null);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Handle navigation from Dashboard
   useEffect(() => {
@@ -26,14 +25,6 @@ const Timetable = ({ user, onLogout }) => {
       console.error('Error generating PDF:', error);
       alert('Error generating PDF. Please try again.');
     }
-  };
-
-  const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen);
-  };
-
-  const closeSidebar = () => {
-    setSidebarOpen(false);
   };
 
   // Mock timetable data from your Python program
@@ -130,26 +121,18 @@ const Timetable = ({ user, onLogout }) => {
 
   return (
     <div className="container">
-      {/* Sidebar Overlay */}
-      {sidebarOpen && <div className="sidebar-overlay open" onClick={closeSidebar}></div>}
-      
       {/* Sidebar */}
-      <div className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
+      <div className="sidebar">
         <div style={{ padding: '20px', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
           <h1 style={{ color: 'white', fontSize: '1.5rem', fontWeight: 'bold' }}>Skeduler</h1>
-          <button 
-            className="mobile-menu-toggle"
-            onClick={closeSidebar}
-            style={{ background: 'none', border: 'none', color: 'white', fontSize: '1.2rem', marginTop: '10px' }}
-          >
-            ×
+          <button style={{ background: 'none', border: 'none', color: 'white', fontSize: '1.2rem', marginTop: '10px' }}>
+            ☰
           </button>
         </div>
         
         <nav style={{ padding: '20px 0' }}>
           <Link 
             to="/dashboard" 
-            onClick={closeSidebar}
             style={{ 
               display: 'flex', 
               alignItems: 'center', 
@@ -167,7 +150,6 @@ const Timetable = ({ user, onLogout }) => {
           
           <Link 
             to="/upload" 
-            onClick={closeSidebar}
             style={{ 
               display: 'flex', 
               alignItems: 'center', 
@@ -184,7 +166,6 @@ const Timetable = ({ user, onLogout }) => {
           
           <Link 
             to="/verification" 
-            onClick={closeSidebar}
             style={{ 
               display: 'flex', 
               alignItems: 'center', 
@@ -201,7 +182,6 @@ const Timetable = ({ user, onLogout }) => {
           
           <Link 
             to="/settings" 
-            onClick={closeSidebar}
             style={{ 
               display: 'flex', 
               alignItems: 'center', 
@@ -223,13 +203,6 @@ const Timetable = ({ user, onLogout }) => {
         {/* Header */}
         <div className="header">
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-            <button 
-              className="mobile-menu-toggle"
-              onClick={toggleSidebar}
-              style={{ background: 'none', border: 'none', color: 'white', fontSize: '1.2rem' }}
-            >
-              ☰
-            </button>
             <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>timetable</h1>
           </div>
           
