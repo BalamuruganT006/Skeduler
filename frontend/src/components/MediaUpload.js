@@ -99,7 +99,7 @@ const MediaUpload = ({ user, onLogout }) => {
               style={{ display: 'none' }}
               id="file-upload"
             />
-            <label htmlFor="file-upload" className="btn btn-primary" style={{ marginTop: '15px' }}>
+            <label htmlFor="file-upload" className="btn btn-primary upload-browse-btn">
               Browse Files
             </label>
           </div>
