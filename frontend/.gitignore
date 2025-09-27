@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Dependencies
 node_modules/
 package-lock.json
@@ -96,3 +97,10 @@ Thumbs.db
 
 # Windows batch files
 start.bat
+=======
+/node_modules
+/package-lock.json
+/package.json
+/start.bat
+
+>>>>>>> 6724be6ce81149f73d3188ab3136373c99e84d34
