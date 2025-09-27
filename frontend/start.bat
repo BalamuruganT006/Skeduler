@@ -1,9 +1,0 @@
-@echo off
-echo Starting Skeduler Frontend...
-echo.
-echo Installing dependencies...
-call npm install
-echo.
-echo Starting development server...
-call npm start
-pause
