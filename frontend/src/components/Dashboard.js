@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { BarChart3, Upload, TrendingUp, Eye, Download as DownloadIcon, LayoutDashboard, FilePlus2, CheckSquare, Settings as SettingsIcon, Menu as MenuIcon, Search, Bell, ChevronDown } from 'lucide-react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { generateTimetablePDF, generateAllTimetablesPDF } from '../utils/pdfGenerator';
 
 const Dashboard = ({ user, onLogout }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Mock data for dashboard
   const dashboardStats = [
-    { title: 'TOTAL TIMETABLE', value: '16', icon: '📊' },
-    { title: 'RECENT UPLOAD', value: '16', icon: '📤' },
-    { title: 'SUCCESS RATE', value: '99', icon: '📈' }
+    { title: 'TOTAL TIMETABLE', value: '16', icon: BarChart3 },
+    { title: 'RECENT UPLOAD', value: '16', icon: Upload },
+    { title: 'SUCCESS RATE', value: '99', icon: TrendingUp }
   ];
 
   const timetableData = [
@@ -70,102 +72,29 @@ const Dashboard = ({ user, onLogout }) => {
       )}
       
       {/* Sidebar */}
-      <div className={`sidebar ${sidebarOpen ? '' : 'mobile-hidden'}`}>
-        <div style={{ padding: '20px', borderBottom: '1px solid rgba(0,0,0,0.1)' }}>
-          <h1 style={{ color: '#0B005F', fontSize: '1.5rem', fontWeight: 'bold' }}>Skeduler</h1>
-          <button 
-            style={{ 
-              background: 'none', 
-              border: 'none', 
-              color: '#333', 
-              fontSize: '1.2rem', 
-              marginTop: '10px',
-              padding: '8px',
-              borderRadius: '4px',
-              cursor: 'pointer',
-              transition: 'background-color 0.2s'
-            }}
-            onMouseEnter={(e) => e.target.style.backgroundColor = '#8CD0D2'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
-            onClick={toggleSidebar}
-          >
-            ☰
+      <div className={`sidebar ${sidebarOpen ? '' : 'mobile-hidden'}`} aria-hidden={!sidebarOpen}>
+        <div className="sidebar-header">
+          <div className="sidebar-brand">Skeduler</div>
+          <button className="sidebar-toggle" onClick={toggleSidebar} aria-label="Toggle sidebar">
+            <MenuIcon size={18} />
           </button>
         </div>
-        
-        <nav style={{ padding: '20px 0' }}>
-          <Link 
-            to="/dashboard" 
-            style={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              padding: '15px 20px', 
-              color: 'white', 
-              textDecoration: 'none',
-              backgroundColor: '#8CD0D2',
-              margin: '5px 10px',
-              borderRadius: '6px'
-            }}
-          >
-            <span style={{ marginRight: '10px' }}>📊</span>
-            DASHBOARD
+        <nav className="sidebar-nav">
+          <Link to="/dashboard" className={`sidebar-link ${location.pathname === '/dashboard' ? 'active' : ''}`}>
+            <LayoutDashboard size={18} />
+            <span>Dashboard</span>
           </Link>
-          
-          <Link 
-            to="/upload" 
-            style={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              padding: '15px 20px', 
-              color: '#333', 
-              textDecoration: 'none',
-              margin: '5px 10px',
-              borderRadius: '6px',
-              transition: 'background-color 0.2s'
-            }}
-            onMouseEnter={(e) => e.target.style.backgroundColor = '#8CD0D2'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
-          >
-            <span style={{ marginRight: '10px' }}>📄</span>
-            ADD DOCUMENT FILES
+          <Link to="/upload" className={`sidebar-link ${location.pathname === '/upload' ? 'active' : ''}`}>
+            <FilePlus2 size={18} />
+            <span>Add Document Files</span>
           </Link>
-          
-          <Link 
-            to="/verification" 
-            style={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              padding: '15px 20px', 
-              color: '#333', 
-              textDecoration: 'none',
-              margin: '5px 10px',
-              borderRadius: '6px',
-              transition: 'background-color 0.2s'
-            }}
-            onMouseEnter={(e) => e.target.style.backgroundColor = '#8CD0D2'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
-          >
-            <span style={{ marginRight: '10px' }}>✅</span>
-            DATA VERIFICATION
+          <Link to="/verification" className={`sidebar-link ${location.pathname === '/verification' ? 'active' : ''}`}>
+            <CheckSquare size={18} />
+            <span>Data Verification</span>
           </Link>
-          
-          <Link 
-            to="/settings" 
-            style={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              padding: '15px 20px', 
-              color: '#333', 
-              textDecoration: 'none',
-              margin: '5px 10px',
-              borderRadius: '6px',
-              transition: 'background-color 0.2s'
-            }}
-            onMouseEnter={(e) => e.target.style.backgroundColor = '#8CD0D2'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
-          >
-            <span style={{ marginRight: '10px' }}>⚙️</span>
-            SETTINGS
+          <Link to="/settings" className={`sidebar-link ${location.pathname === '/settings' ? 'active' : ''}`}>
+            <SettingsIcon size={18} />
+            <span>Settings</span>
           </Link>
         </nav>
       </div>
@@ -175,7 +104,7 @@ const Dashboard = ({ user, onLogout }) => {
         {/* Header */}
         <div className="header">
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>
-            <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>Skeduler</h1>
+            <h1 style={{ fontSize: '2.25rem', fontWeight: '800' }}>Skeduler</h1>
             <button 
               style={{ 
                 background: 'none', 
@@ -191,7 +120,7 @@ const Dashboard = ({ user, onLogout }) => {
               onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
               onClick={toggleSidebar}
             >
-              ☰
+              <MenuIcon size={18} />
             </button>
           </div>
           
@@ -210,7 +139,7 @@ const Dashboard = ({ user, onLogout }) => {
               onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(140, 208, 210, 0.3)'}
               onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
             >
-              🔍
+              <Search size={18} />
             </button>
             <button 
               style={{ 
@@ -226,7 +155,7 @@ const Dashboard = ({ user, onLogout }) => {
               onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(140, 208, 210, 0.3)'}
               onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
             >
-              🔔
+              <Bell size={18} />
             </button>
             <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
               <span style={{ fontSize: '14px' }}>{user?.name || user?.username || 'ADMIN'}</span>
@@ -243,7 +172,7 @@ const Dashboard = ({ user, onLogout }) => {
                 onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(140, 208, 210, 0.3)'}
                 onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
               >
-                ▼
+                <ChevronDown size={16} />
               </button>
             </div>
           </div>
@@ -253,13 +182,18 @@ const Dashboard = ({ user, onLogout }) => {
         <div className="content-area">
           {/* Dashboard Cards */}
           <div className="dashboard-cards">
-            {dashboardStats.map((stat, index) => (
-              <div key={index} className="dashboard-card">
-                <div className="dashboard-card-title">{stat.title}</div>
-                <div className="dashboard-card-value">{stat.value}</div>
-                <div className="dashboard-card-icon">{stat.icon}</div>
-              </div>
-            ))}
+            {dashboardStats.map((stat, index) => {
+              const Icon = stat.icon;
+              return (
+                <div key={index} className="dashboard-card">
+                  <div className="dashboard-card-title">{stat.title}</div>
+                  <div className="dashboard-card-value">{stat.value}</div>
+                  <div className="dashboard-card-icon" aria-hidden>
+                    <Icon size={48} strokeWidth={2.5} />
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
           {/* Download All Button */}
@@ -270,7 +204,7 @@ const Dashboard = ({ user, onLogout }) => {
               style={{ padding: '10px 20px', fontSize: '14px' }}
               title="Download all timetables as a single PDF"
             >
-              📥 Download All Timetables
+              <DownloadIcon size={16} /> Download All Timetables
             </button>
           </div>
 
@@ -279,9 +213,9 @@ const Dashboard = ({ user, onLogout }) => {
             <table className="table">
               <thead>
                 <tr>
-                  <th>S.NO</th>
+                  <th>SNO</th>
                   <th>NAME</th>
-                  <th>YEAR/DEPT</th>
+                  <th>YEAR/SEM</th>
                   <th>ACTION</th>
                 </tr>
               </thead>
@@ -292,23 +226,25 @@ const Dashboard = ({ user, onLogout }) => {
                     <td>{item.name}</td>
                     <td>{item.yearDept}</td>
                     <td>
-                       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                         <button 
-                           className="btn-view"
-                           onClick={() => handleViewTimetable(item.classCode, item.name, item.yearDept)}
-                           title={`View timetable for ${item.name} - ${item.yearDept}`}
-                         >
-                           VIEW
-                         </button>
-                         <button 
-                           className="btn-download"
-                           onClick={() => handleDownloadTimetable(item.classCode, item.name, item.yearDept)}
-                           title={`Download PDF timetable for ${item.name} - ${item.yearDept}`}
-                         >
-                           DOWNLOAD
-                         </button>
-                       </div>
-                    </td>
+                      <div className="actions">
+                        <button 
+                          className="btn-view"
+                          onClick={() => handleViewTimetable(item.classCode, item.name, item.yearDept)}
+                          title={`View timetable for ${item.name} - ${item.yearDept}`}
+                        >
+                          <Eye size={16} />
+                          <span>VIEW</span>
+                        </button>
+                        <button 
+                          className="btn-download"
+                          onClick={() => handleDownloadTimetable(item.classCode, item.name, item.yearDept)}
+                          title={`Download PDF timetable for ${item.name} - ${item.yearDept}`}
+                        >
+                          <DownloadIcon size={16} />
+                          <span>DOWNLOAD</span>
+                        </button>
+                      </div>
+                   </td>
                   </tr>
                 ))}
               </tbody>
