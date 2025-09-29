@@ -71,13 +71,13 @@ const Dashboard = ({ user, onLogout }) => {
       
       {/* Sidebar */}
       <div className={`sidebar ${sidebarOpen ? '' : 'mobile-hidden'}`}>
-        <div style={{ padding: '20px', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
-          <h1 style={{ color: 'white', fontSize: '1.5rem', fontWeight: 'bold' }}>Skeduler</h1>
+        <div style={{ padding: '20px', borderBottom: '1px solid rgba(0,0,0,0.1)' }}>
+          <h1 style={{ color: '#0B005F', fontSize: '1.5rem', fontWeight: 'bold' }}>Skeduler</h1>
           <button 
             style={{ 
               background: 'none', 
               border: 'none', 
-              color: 'white', 
+              color: '#333', 
               fontSize: '1.2rem', 
               marginTop: '10px',
               padding: '8px',
@@ -85,7 +85,7 @@ const Dashboard = ({ user, onLogout }) => {
               cursor: 'pointer',
               transition: 'background-color 0.2s'
             }}
-            onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(255,255,255,0.1)'}
+            onMouseEnter={(e) => e.target.style.backgroundColor = '#8CD0D2'}
             onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
             onClick={toggleSidebar}
           >
@@ -102,7 +102,7 @@ const Dashboard = ({ user, onLogout }) => {
               padding: '15px 20px', 
               color: 'white', 
               textDecoration: 'none',
-              backgroundColor: '#06b6d4',
+              backgroundColor: '#8CD0D2',
               margin: '5px 10px',
               borderRadius: '6px'
             }}
@@ -117,11 +117,14 @@ const Dashboard = ({ user, onLogout }) => {
               display: 'flex', 
               alignItems: 'center', 
               padding: '15px 20px', 
-              color: '#6b7280', 
+              color: '#333', 
               textDecoration: 'none',
               margin: '5px 10px',
-              borderRadius: '6px'
+              borderRadius: '6px',
+              transition: 'background-color 0.2s'
             }}
+            onMouseEnter={(e) => e.target.style.backgroundColor = '#8CD0D2'}
+            onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
           >
             <span style={{ marginRight: '10px' }}>📄</span>
             ADD DOCUMENT FILES
@@ -133,11 +136,14 @@ const Dashboard = ({ user, onLogout }) => {
               display: 'flex', 
               alignItems: 'center', 
               padding: '15px 20px', 
-              color: '#6b7280', 
+              color: '#333', 
               textDecoration: 'none',
               margin: '5px 10px',
-              borderRadius: '6px'
+              borderRadius: '6px',
+              transition: 'background-color 0.2s'
             }}
+            onMouseEnter={(e) => e.target.style.backgroundColor = '#8CD0D2'}
+            onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
           >
             <span style={{ marginRight: '10px' }}>✅</span>
             DATA VERIFICATION
@@ -149,11 +155,14 @@ const Dashboard = ({ user, onLogout }) => {
               display: 'flex', 
               alignItems: 'center', 
               padding: '15px 20px', 
-              color: '#6b7280', 
+              color: '#333', 
               textDecoration: 'none',
               margin: '5px 10px',
-              borderRadius: '6px'
+              borderRadius: '6px',
+              transition: 'background-color 0.2s'
             }}
+            onMouseEnter={(e) => e.target.style.backgroundColor = '#8CD0D2'}
+            onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
           >
             <span style={{ marginRight: '10px' }}>⚙️</span>
             SETTINGS
@@ -178,7 +187,7 @@ const Dashboard = ({ user, onLogout }) => {
                 cursor: 'pointer',
                 transition: 'background-color 0.2s'
               }}
-              onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(255,255,255,0.1)'}
+              onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(140, 208, 210, 0.3)'}
               onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
               onClick={toggleSidebar}
             >
@@ -198,7 +207,7 @@ const Dashboard = ({ user, onLogout }) => {
                 cursor: 'pointer',
                 transition: 'background-color 0.2s'
               }}
-              onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(255,255,255,0.1)'}
+              onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(140, 208, 210, 0.3)'}
               onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
             >
               🔍
@@ -214,7 +223,7 @@ const Dashboard = ({ user, onLogout }) => {
                 cursor: 'pointer',
                 transition: 'background-color 0.2s'
               }}
-              onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(255,255,255,0.1)'}
+              onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(140, 208, 210, 0.3)'}
               onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
             >
               🔔
@@ -231,7 +240,7 @@ const Dashboard = ({ user, onLogout }) => {
                   cursor: 'pointer',
                   transition: 'background-color 0.2s'
                 }}
-                onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(255,255,255,0.1)'}
+                onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(140, 208, 210, 0.3)'}
                 onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
               >
                 ▼
@@ -283,24 +292,22 @@ const Dashboard = ({ user, onLogout }) => {
                     <td>{item.name}</td>
                     <td>{item.yearDept}</td>
                     <td>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                        <button 
-                          className="btn btn-primary" 
-                          style={{ padding: '8px 12px', fontSize: '12px', minWidth: '80px' }}
-                          onClick={() => handleViewTimetable(item.classCode, item.name, item.yearDept)}
-                          title={`View timetable for ${item.name} - ${item.yearDept}`}
-                        >
-                          VIEW
-                        </button>
-                        <button 
-                          className="btn btn-secondary" 
-                          style={{ padding: '8px 12px', fontSize: '12px', minWidth: '80px' }}
-                          onClick={() => handleDownloadTimetable(item.classCode, item.name, item.yearDept)}
-                          title={`Download PDF timetable for ${item.name} - ${item.yearDept}`}
-                        >
-                          📥 DOWNLOAD
-                        </button>
-                      </div>
+                       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                         <button 
+                           className="btn-view"
+                           onClick={() => handleViewTimetable(item.classCode, item.name, item.yearDept)}
+                           title={`View timetable for ${item.name} - ${item.yearDept}`}
+                         >
+                           VIEW
+                         </button>
+                         <button 
+                           className="btn-download"
+                           onClick={() => handleDownloadTimetable(item.classCode, item.name, item.yearDept)}
+                           title={`Download PDF timetable for ${item.name} - ${item.yearDept}`}
+                         >
+                           DOWNLOAD
+                         </button>
+                       </div>
                     </td>
                   </tr>
                 ))}

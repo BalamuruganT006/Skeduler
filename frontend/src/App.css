@@ -133,7 +133,7 @@
 }
 
 .dashboard-card {
-  background: #1e40af;
+  background: #0B005F;
   color: white;
   padding: 20px;
   border-radius: 8px;
@@ -177,7 +177,7 @@
 .timetable-title {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #1e40af;
+  color: #0B005F;
 }
 
 .timetable-table {
@@ -195,7 +195,7 @@
 }
 
 .timetable-table th {
-  background-color: #1e40af;
+  background-color: #0B005F;
   color: white;
   font-weight: 600;
   text-align: center;

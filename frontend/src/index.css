@@ -26,8 +26,8 @@ code {
 
 .sidebar {
   width: 250px;
-  background-color: #1e3a8a;
-  color: white;
+  background-color: #D9D9D9;
+  color: #333;
   padding: 20px 0;
   position: fixed;
   height: 100vh;
@@ -43,7 +43,7 @@ code {
 }
 
 .header {
-  background-color: #1e40af;
+  background-color: #0B005F;
   color: white;
   padding: 15px 30px;
   display: flex;
@@ -85,6 +85,43 @@ code {
   background-color: #4b5563;
 }
 
+/* Custom Table Action Buttons */
+.btn-view {
+  background-color: #8CD0D2;
+  color: #0B005F;
+  border: 2px solid #0B005F;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 80px;
+}
+
+.btn-view:hover {
+  background-color: #0B005F;
+  color: white;
+}
+
+.btn-download {
+  background-color: #D9D9D9;
+  color: #0B005F;
+  border: 2px solid #0B005F;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 80px;
+}
+
+.btn-download:hover {
+  background-color: #0B005F;
+  color: white;
+}
+
 /* Card Styles */
 .card {
   background: white;
@@ -108,13 +145,18 @@ code {
 .table td {
   padding: 12px 15px;
   text-align: left;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid;
+  border-image: linear-gradient(to right, #6D54B5 0%, #FFFFFF 100%) 1;
 }
 
 .table th {
   background-color: #f9fafb;
   font-weight: 600;
-  color: #374151;
+  color: #0B005F;
+}
+
+.table td {
+  color: #0B005F;
 }
 
 .table tbody tr:hover {
