@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Menu as MenuIcon } from 'lucide-react';
 
 const Signup = ({ onLogin }) => {
   const [formData, setFormData] = useState({
@@ -45,7 +46,7 @@ const Signup = ({ onLogin }) => {
               onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(0,0,0,0.1)'}
               onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
             >
-              ☰
+              <MenuIcon size={18} />
             </button>
           </div>
           

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Menu as MenuIcon, CloudUpload, AlertTriangle } from 'lucide-react';
 
 const MediaUpload = ({ user, onLogout }) => {
   const [uploadState, setUploadState] = useState('idle'); // 'idle', 'uploading', 'error'
@@ -79,7 +80,7 @@ const MediaUpload = ({ user, onLogout }) => {
       case 'error':
         return (
           <div className="upload-error">
-            <div className="upload-error-icon">⚠️</div>
+            <div className="upload-error-icon"><AlertTriangle size={20} /></div>
             <div className="upload-text">File upload failed</div>
             <div className="upload-subtext">Please try again</div>
             <button 
@@ -97,7 +98,7 @@ const MediaUpload = ({ user, onLogout }) => {
             onDrop={handleDrop}
             onDragOver={handleDragOver}
           >
-            <div className="upload-icon">☁️</div>
+            <div className="upload-icon"><CloudUpload size={36} /></div>
             <div className="upload-text">Drag your file(s) or browse</div>
             <div className="upload-subtext">Max 10 MB files are allowed</div>
             <input
@@ -146,7 +147,7 @@ const MediaUpload = ({ user, onLogout }) => {
             onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
             onClick={toggleSidebar}
           >
-            ☰
+            <MenuIcon size={18} />
           </button>
         </div>
         

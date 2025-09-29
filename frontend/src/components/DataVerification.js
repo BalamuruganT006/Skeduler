@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Menu as MenuIcon, LayoutDashboard, FilePlus2, CheckSquare, Settings as SettingsIcon } from 'lucide-react';
 
 const DataVerification = ({ user, onLogout }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -42,7 +43,7 @@ const DataVerification = ({ user, onLogout }) => {
             onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
             onClick={toggleSidebar}
           >
-            ☰
+            <MenuIcon size={18} />
           </button>
         </div>
         
@@ -59,7 +60,7 @@ const DataVerification = ({ user, onLogout }) => {
               borderRadius: '6px'
             }}
           >
-            <span style={{ marginRight: '10px' }}>📊</span>
+            <LayoutDashboard size={18} style={{ marginRight: '10px' }} />
             DASHBOARD
           </Link>
           
@@ -75,7 +76,7 @@ const DataVerification = ({ user, onLogout }) => {
               borderRadius: '6px'
             }}
           >
-            <span style={{ marginRight: '10px' }}>📄</span>
+            <FilePlus2 size={18} style={{ marginRight: '10px' }} />
             ADD DOCUMENT FILES
           </Link>
           
@@ -92,7 +93,7 @@ const DataVerification = ({ user, onLogout }) => {
               borderRadius: '6px'
             }}
           >
-            <span style={{ marginRight: '10px' }}>✅</span>
+            <CheckSquare size={18} style={{ marginRight: '10px' }} />
             DATA VERIFICATION
           </Link>
           
@@ -108,7 +109,7 @@ const DataVerification = ({ user, onLogout }) => {
               borderRadius: '6px'
             }}
           >
-            <span style={{ marginRight: '10px' }}>⚙️</span>
+            <SettingsIcon size={18} style={{ marginRight: '10px' }} />
             SETTINGS
           </Link>
         </nav>

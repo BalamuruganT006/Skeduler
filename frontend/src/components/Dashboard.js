@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { BarChart3, Upload, TrendingUp, Eye, Download as DownloadIcon, LayoutDashboard, FilePlus2, CheckSquare, Settings as SettingsIcon, Menu as MenuIcon, Search, Bell, ChevronDown } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { BarChart3, Upload, TrendingUp, Eye, Download as DownloadIcon, LayoutDashboard, FilePlus2, CheckSquare, Settings as SettingsIcon, Menu as MenuIcon, Search, Bell, ChevronDown, LogOut, User } from 'lucide-react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { generateTimetablePDF, generateAllTimetablesPDF } from '../utils/pdfGenerator';
 
@@ -7,6 +7,18 @@ const Dashboard = ({ user, onLogout }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const userMenuRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (userMenuRef.current && !userMenuRef.current.contains(event.target)) {
+        setUserMenuOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   // Mock data for dashboard
   const dashboardStats = [
@@ -100,7 +112,7 @@ const Dashboard = ({ user, onLogout }) => {
       </div>
 
       {/* Main Content */}
-      <div className={`main-content ${sidebarOpen ? '' : 'sidebar-hidden'}`}>
+      <div className={`main-content ${sidebarOpen ? 'with-sidebar' : 'sidebar-hidden'}`}>
         {/* Header */}
         <div className="header">
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>
@@ -157,23 +169,20 @@ const Dashboard = ({ user, onLogout }) => {
             >
               <Bell size={18} />
             </button>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-              <span style={{ fontSize: '14px' }}>{user?.name || user?.username || 'ADMIN'}</span>
-              <button 
-                style={{ 
-                  background: 'none', 
-                  border: 'none', 
-                  color: 'white',
-                  padding: '4px',
-                  borderRadius: '4px',
-                  cursor: 'pointer',
-                  transition: 'background-color 0.2s'
-                }}
-                onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(140, 208, 210, 0.3)'}
-                onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
-              >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', position: 'relative' }} ref={userMenuRef}>
+              <button className="user-toggle" onClick={() => setUserMenuOpen((v) => !v)}>
+                <User size={18} />
+                <span className="user-toggle-label">{user?.name || user?.username || 'Administrator'}</span>
                 <ChevronDown size={16} />
               </button>
+              {userMenuOpen && (
+                <div className="user-menu">
+                  <button className="user-menu-item" onClick={onLogout}>
+                    <LogOut size={16} />
+                    <span>Log out</span>
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>
